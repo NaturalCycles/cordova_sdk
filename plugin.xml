@@ -27,10 +27,12 @@
 
     <!-- Android -->
     <platform name="android">
-        <config-file target="AndroidManifest.xml" parent="/manifest">
-            <uses-permission android:name="android.permission.INTERNET" />
-            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Adjust">
+                <param name="android-package" value="com.adjust.sdk.AdjustCordova"/>
+                <param name="onload" value="true" />
+            </feature>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -44,11 +46,10 @@
             </receiver>
         </config-file>
 
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Adjust">
-                <param name="android-package" value="com.adjust.sdk.AdjustCordova"/>
-                <param name="onload" value="true" />
-            </feature>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
         </config-file>
 
         <source-file src="src/android/AdjustCordova.java" target-dir="src/com/adjust/sdk" />
